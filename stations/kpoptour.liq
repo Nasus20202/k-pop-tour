@@ -8,18 +8,14 @@ all_playlist = playlist("~/radio/playlists/all.m3u", reload_mode="watch")
 
 # Some jingles
 jingles = playlist("~/radio/sounds/jingles.m3u", reload_mode="watch")
-
+	
 # Start building the feed with music
 hits_radio = hits_playlist
 all_radio = all_playlist
 
-# Add songs crossfade
-hits_radio = crossfade(hits_radio)
-all_radio = crossfade(all_radio)
-
 # Add jingles
-hits_radio = random(weights=[1, 10], [jingles, hits_radio])
-all_radio = random(weights=[1, 10], [jingles, all_radio])
+hits_radio = rotate(weights=[1, 10], [jingles, hits_radio])
+all_radio = rotate(weights=[1, 10], [jingles, all_radio])
 
 # Add the security
 hits_radio = mksafe(hits_radio)
