@@ -24,10 +24,10 @@ cd ~/radio
 SYNC_DATE=$(date "+%F %H:%M:%S")
 HITS_COUNT=$(find ./music/hits -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
 ALL_COUNT=$(find ./music/all -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
-ROCK_N_HIPHOP_COUNT=$(find ./music/rock-h-hiphop -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
+ROCK_N_HIPHOP_COUNT=$(find ./music/rock-n-hiphop -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
 
 echo Syncing done: $SYNC_DATE >> sync.log
 echo Songs in hits playlist: $HITS_COUNT >> sync.log
 echo Songs in all playlist: $ALL_COUNT >> sync.log
-echo Songs in rock'n hip-hop playlist: $ROCK_N_HIPHOP_COUNT >> sync.log
+echo Songs in rock\'n hip-hop playlist: $ROCK_N_HIPHOP_COUNT >> sync.log
 echo >> sync.log
