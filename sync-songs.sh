@@ -11,7 +11,7 @@ echo 'Syncing all...'
 cd ~/radio/music/all
 zotify https://open.spotify.com/playlist/17ZDg6lQ20DHhAkoMOnyKC --config-location ~/radio/zotify-config.json
 
-echo 'Syncing rock'n hip-hop...'
+echo "Syncing rock'n hip-hop..."
 cd ~/radio/music/rock-n-hiphop
 zotify https://open.spotify.com/playlist/33eyugEph52Fk6ERcNuFUI --config-location ~/radio/zotify-config.json
 
