@@ -9,3 +9,4 @@ locate_in_folder() {
 cd ~/radio/playlists
 locate_in_folder all
 locate_in_folder hits
+locate_in_folder rock-n-hiphop
