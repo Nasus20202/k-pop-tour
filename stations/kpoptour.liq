@@ -3,12 +3,12 @@
 #log.file.path.set("/tmp/liquidsoap.log")
 
 # Music
-hits_playlist = playlist("~/radio/playlists/hits.m3u", reload_mode="watch")
-all_playlist = playlist("~/radio/playlists/all.m3u", reload_mode="watch")
-rock_n_hiphop_playlist = playlist("~/radio/playlists/rock-n-hiphop.m3u", reload_mode="watch")
+hits_playlist = playlist("~/radio/playlists/hits.m3u", reload=3600)
+all_playlist = playlist("~/radio/playlists/all.m3u", reload=3600)
+rock_n_hiphop_playlist = playlist("~/radio/playlists/rock-n-hiphop.m3u", reload=3600)
 
 # Some jingles
-jingles = playlist("~/radio/sounds/jingles.m3u", reload_mode="watch")
+jingles = playlist("~/radio/sounds/jingles.m3u", reload=3600)
 	
 # Start building the feed with music
 hits_radio = hits_playlist
