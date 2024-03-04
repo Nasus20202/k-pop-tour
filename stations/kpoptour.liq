@@ -61,3 +61,5 @@ output.icecast(
   genre="K-Pop, K-Rock, Korean Hip-hop",
   rock_n_hiphop_radio
 )
+
+%include "tv.liq"

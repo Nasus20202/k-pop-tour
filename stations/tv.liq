@@ -1,18 +1,22 @@
 #!/usr/bin/liquidsoap
+
+# In file /usr/share/liquidsoap/libs/protocols.liq
+# Change "rm -f $(output) && #{binary} -q -f best --no-playlist -o $(output) -- #{process.quote(arg)}"
+#   to   "rm -f $(output) && #{binary} -q -S res:1080 --no-playlist -o $(output) -- #{process.quote(arg)}
+
 settings.frame.video.height.set(1080)
 settings.frame.video.width.set(1920)
 settings.protocol.youtube_dl.path.set("yt-dlp")
 
 tv = playlist("youtube-pl:PLjGxP4zgfFsAea4KjKifa0VUVMbxuwX2B", reload=86400)
-tv = fallback([tv, single("../sounds/fallback.webm")])
+tv = fallback([tv, single("~/radio/sounds/fallback.webm")])
 
 output.icecast(
-        %ffmpeg(format="mpegts",
-            %audio(codec="ac3",channel_coupling=0),
-            %video(codec="libx264",b="6000k",
-            "x264-params"="scenecut=0:open_gop=0:min-keyint=150:keyint=150",
-            preset="fast")),
-        icy_metadata="true",
+        %ffmpeg(format="webm",
+            %video.copy,
+            %audio.copy
+        ),
+        icy_metadata="false",
         host="localhost",
         port=8000,
         password=getenv("SOURCE_PASSWORD"),
