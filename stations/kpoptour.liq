@@ -66,7 +66,11 @@ rock_n_hiphop_radio = mksafe(rock_n_hiphop_radio)
 host = "localhost"
 port = 8000
 password = getenv("SOURCE_PASSWORD")
-codec = %vorbis.abr(samplerate=44100, channels=2, bitrate=160, max_bitrate=240, min_bitrate=80)
+#codec = %vorbis.abr(samplerate=44100, channels=2, bitrate=160, max_bitrate=240, min_bitrate=80)
+codec = %ffmpeg(
+          format="ogg",
+          %audio(codec="libvorbis", q="6")
+        )
 
 output.icecast(
   codec,
