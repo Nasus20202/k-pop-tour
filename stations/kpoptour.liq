@@ -62,48 +62,4 @@ hits_radio = mksafe(hits_radio)
 all_radio = mksafe(all_radio)
 rock_n_hiphop_radio = mksafe(rock_n_hiphop_radio)
 
-# Stream it out
-host = "localhost"
-port = 8000
-password = getenv("SOURCE_PASSWORD")
-#codec = %vorbis.abr(samplerate=44100, channels=2, bitrate=160, max_bitrate=240, min_bitrate=80)
-codec = %ffmpeg(
-          format="ogg",
-          %audio(codec="libvorbis", q="6")
-        )
-
-output.icecast(
-  codec,
-  host=host,
-  port=port,
-  password=password,
-  mount="hits.ogg",
-  name="K-Pop Tour | Hits",
-  description="Greatest k-pop girl group hits!",
-  genre="K-pop, K-Pop Girl Group",
-  hits_radio
-)
-
-output.icecast(
-  codec,
-  host=host,
-  port=port,
-  password=password,
-  mount="all.ogg",
-  name="K-Pop Tour | All",
-  description="Infinite amout of k-pop girl group songs!",
-  genre="K-pop, K-Pop Girl Group",
-  all_radio
-)
-
-output.icecast(
-  codec,
-  host=host,
-  port=port,
-  password=password,
-  mount="rock-n-hiphop.ogg",
-  name="K-Pop Tour | Rock'n Hip-Hop",
-  description="Korean girl rock and hip-hop",
-  genre="K-Pop, K-Pop Girl Group, K-Rock, Korean Hip-hop",
-  rock_n_hiphop_radio
-)
+%include "kpoptour-output.liq"
