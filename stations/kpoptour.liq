@@ -109,7 +109,6 @@ def stream(config)
 end
 
 configs = list.map(prepare_radio, configs)
-print(configs)
 
 list.iter(
     fun(config) -> stream(config),
