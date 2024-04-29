@@ -23,7 +23,15 @@ rock_n_hiphop_config = {
     radio = rock_n_hiphop_radio
 }
 
-configs = [hits_config, all_config, rock_n_hiphop_config]
+chill_config = {
+    name = "K-Pop Tour | Chill",
+    desc = "Korean chill vibes",
+    genre = "K-Pop, K-Pop Girl Group",
+    mount = "chill",
+    radio = chill_radio
+}
+
+configs = [hits_config, all_config, rock_n_hiphop_config, chill_config]
 
 host = "localhost"
 port = 8000
