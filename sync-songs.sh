@@ -14,6 +14,7 @@ zotify https://open.spotify.com/playlist/17ZDg6lQ20DHhAkoMOnyKC --config-locatio
 echo "Syncing rock'n hip-hop..."
 cd ~/radio/music/rock-n-hiphop
 zotify https://open.spotify.com/playlist/33eyugEph52Fk6ERcNuFUI --config-location ~/radio/zotify-config.json
+zotify https://open.spotify.com/playlist/4bBDiufYLrd6NUIU5olwRi --config-location ~/radio/zotify-config.json
 
 echo 'Locating songs...'
 cd ~/radio
