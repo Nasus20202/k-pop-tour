@@ -1,4 +1,5 @@
 #!/usr/bin/liquidsoap
+dir = "~/radio"
 
 # In file /usr/share/liquidsoap/libs/protocols.liq
 # Change "rm -f $(output) && #{binary} -q -f best --no-playlist -o $(output) -- #{process.quote(arg)}"
@@ -9,7 +10,7 @@ settings.frame.video.width.set(1920)
 settings.protocol.youtube_dl.path.set("yt-dlp")
 
 tv = playlist("youtube-pl:PLjGxP4zgfFsAea4KjKifa0VUVMbxuwX2B", reload=86400)
-tv = fallback([tv, single("~/radio/sounds/fallback.webm")])
+tv = fallback([tv, single(dir^"/sounds/fallback.webm")])
 
 output.icecast(
         %ffmpeg(format="webm",

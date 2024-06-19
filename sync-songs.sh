@@ -1,14 +1,18 @@
 #!/bin/bash
+DIR=~/radio
+
+#Activate .venv
+source $DIR/.venv/bin/activate
 
 cd ~/radio
 echo Syncing songs... >> sync.log
 
 echo 'Syncing hits...'
-cd ~/radio/music/hits
+cd $DIR/music/hits
 zotify https://open.spotify.com/playlist/0iHSvFHgT4iarY5QfK7rLR --config-location ~/radio/zotify-config.json
 
 echo 'Syncing all...'
-cd ~/radio/music/all
+cd $DIR/music/all
 zotify https://open.spotify.com/playlist/17ZDg6lQ20DHhAkoMOnyKC --config-location ~/radio/zotify-config.json
 
 echo "Syncing rock'n hip-hop..."
@@ -17,15 +21,15 @@ zotify https://open.spotify.com/playlist/33eyugEph52Fk6ERcNuFUI --config-locatio
 zotify https://open.spotify.com/playlist/4bBDiufYLrd6NUIU5olwRi --config-location ~/radio/zotify-config.json
 
 echo "Syncing chill..."
-cd ~/radio/music/chill
+cd $DIR/music/chill
 zotify https://open.spotify.com/playlist/7j5As2UovGH410LtfnrplH?si=10824c56a12443e9 --config-location ~/radio/zotify-config.json
 
 echo 'Locating songs...'
-cd ~/radio
+cd $DIR
 ./locate-songs.sh
 
 echo 'Saving stats...'
-cd ~/radio
+cd $DIR
 SYNC_DATE=$(date "+%F %H:%M:%S")
 HITS_COUNT=$(find ./music/hits -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
 ALL_COUNT=$(find ./music/all -type f -name "*.mp3" -o -name "*.ogg" | wc -l)

@@ -1,4 +1,5 @@
 #!/usr/bin/liquidsoap
+dir = "~/radio"
 
 music_reload_time = 3600
 jingles_reload_time = 24 * 3600
@@ -18,8 +19,8 @@ hits_config = {
     desc = "Greatest k-pop girl group hits!",
     genre = "K-pop, K-Pop Girl Group",
     mount = "hits",
-    playlist_file = "~/radio/playlists/hits.m3u",
-    jingles_file = "~/radio/sounds/jingles.m3u"
+    playlist_file = dir^"/playlists/hits.m3u",
+    jingles_file = dir^"/sounds/jingles.m3u"
 }
 
 all_config = {
@@ -27,8 +28,8 @@ all_config = {
     desc = "Infinite amout of k-pop girl group songs!",
     genre = "K-pop, K-Pop Girl Group",
     mount = "all",
-    playlist_file = "~/radio/playlists/all.m3u",
-    jingles_file = "~/radio/sounds/jingles.m3u"
+    playlist_file = dir^"/playlists/all.m3u",
+    jingles_file = dir^"/sounds/jingles.m3u"
 }
 
 rock_n_hiphop_config = {
@@ -36,8 +37,8 @@ rock_n_hiphop_config = {
     desc = "Korean girl rock and hip-hop",
     genre = "K-Pop, K-Pop Girl Group, K-Rock, Korean Hip-hop",
     mount = "rock-n-hiphop",
-    playlist_file = "~/radio/playlists/rock-n-hiphop.m3u",
-    jingles_file = "~/radio/sounds/jingles.m3u"
+    playlist_file = dir^"/playlists/rock-n-hiphop.m3u",
+    jingles_file = dir^"/sounds/jingles.m3u"
 }
 
 chill_config = {
@@ -45,8 +46,8 @@ chill_config = {
     desc = "Korean chill vibes",
     genre = "K-Pop, K-Pop Girl Group",
     mount = "chill",
-    playlist_file = "~/radio/playlists/chill.m3u",
-    jingles_file = "~/radio/sounds/jingles.m3u"
+    playlist_file = dir^"/playlists/chill.m3u",
+    jingles_file = dir^"/sounds/jingles.m3u"
 }
 
 configs = [hits_config, all_config, rock_n_hiphop_config, chill_config]
