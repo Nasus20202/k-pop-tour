@@ -4,30 +4,32 @@ DIR=~/radio
 #Activate .venv
 source $DIR/.venv/bin/activate
 
-cd ~/radio
+cd $DIR
 echo Syncing songs... >> sync.log
+ZOTIFY="zotify --config-location $DIR/zotify-config.json"
+
+# Syncing songs
+cd $DIR/music
 
 echo 'Syncing hits...'
-cd $DIR/music/hits
-zotify https://open.spotify.com/playlist/0iHSvFHgT4iarY5QfK7rLR --config-location ~/radio/zotify-config.json
+$ZOTIFY https://open.spotify.com/playlist/0iHSvFHgT4iarY5QfK7rLR --root-path hits
 
 echo 'Syncing all...'
-cd $DIR/music/all
-zotify https://open.spotify.com/playlist/17ZDg6lQ20DHhAkoMOnyKC --config-location ~/radio/zotify-config.json
+$ZOTIFY https://open.spotify.com/playlist/17ZDg6lQ20DHhAkoMOnyKC --root-path all
 
 echo "Syncing rock'n hip-hop..."
-cd ~/radio/music/rock-n-hiphop
-zotify https://open.spotify.com/playlist/33eyugEph52Fk6ERcNuFUI --config-location ~/radio/zotify-config.json
-zotify https://open.spotify.com/playlist/4bBDiufYLrd6NUIU5olwRi --config-location ~/radio/zotify-config.json
+$ZOTIFY https://open.spotify.com/playlist/33eyugEph52Fk6ERcNuFUI --root-path rock-n-hiphop
+$ZOTIFY https://open.spotify.com/playlist/4bBDiufYLrd6NUIU5olwRi --root-path rock-n-hiphop
 
 echo "Syncing chill..."
-cd $DIR/music/chill
-zotify https://open.spotify.com/playlist/7j5As2UovGH410LtfnrplH?si=10824c56a12443e9 --config-location ~/radio/zotify-config.json
+$ZOTIFY https://open.spotify.com/playlist/7j5As2UovGH410LtfnrplH --root-path chill
 
+# Locating songs
 echo 'Locating songs...'
 cd $DIR
 ./locate-songs.sh
 
+# Saving stats
 echo 'Saving stats...'
 cd $DIR
 SYNC_DATE=$(date "+%F %H:%M:%S")
