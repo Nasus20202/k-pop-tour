@@ -1,3 +1,5 @@
 liquidsoap-daemon/
 *.log
 music/
+playlists/
+.env

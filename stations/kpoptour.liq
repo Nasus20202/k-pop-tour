@@ -1,14 +1,15 @@
 #!/usr/bin/liquidsoap
-dir = "~/radio"
+dir = environment.get("DIR")
+print(dir)
 
 music_reload_time = 3600
 jingles_reload_time = 24 * 3600
 jingles_frequency = 10
 crossfade_duration = 5.
 
-host = "localhost"
+host = environment.get("ICECAST_HOST")
 port = 8000
-password = environment.get("SOURCE_PASSWORD")
+password = environment.get("ICECAST_SOURCE_PASSWORD")
 #codec_vorbis = %vorbis.abr(samplerate=44100, channels=2, bitrate=160, max_bitrate=240, min_bitrate=80)
 codec_vorbis = %ffmpeg(format="ogg", %audio(codec="libvorbis", q="6"))
 #codec_mp3 = %mp3.abr(bitrate=128, max_bitrate=192, id3v2=true)

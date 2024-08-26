@@ -1,12 +1,7 @@
 #!/bin/bash
-DIR=~/radio
-
-#Activate .venv
-source $DIR/.venv/bin/activate
-
 cd $DIR
-echo Syncing songs... >> sync.log
-ZOTIFY="zotify --config-location $DIR/zotify-config.json"
+echo Syncing songs...
+ZOTIFY="zotify --config-location $DIR/zotify-config.json --username $SPOTIFY_USER --password $SPOTIFY_PASSWORD"
 
 # Syncing songs
 cd $DIR/music
@@ -26,8 +21,7 @@ $ZOTIFY https://open.spotify.com/playlist/7j5As2UovGH410LtfnrplH --root-path chi
 
 # Locating songs
 echo 'Locating songs...'
-cd $DIR
-./locate-songs.sh
+/app/locate-songs.sh
 
 # Saving stats
 echo 'Saving stats...'
@@ -38,9 +32,9 @@ ALL_COUNT=$(find ./music/all -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
 ROCK_N_HIPHOP_COUNT=$(find ./music/rock-n-hiphop -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
 CHILL_COUNT=$(find ./music/chill -type f -name "*.mp3" -o -name "*.ogg" | wc -l)
 
-echo Syncing done: $SYNC_DATE >> sync.log
-echo Songs in hits playlist: $HITS_COUNT >> sync.log
-echo Songs in all playlist: $ALL_COUNT >> sync.log
-echo Songs in rock\'n hip-hop playlist: $ROCK_N_HIPHOP_COUNT >> sync.log
-echo Songs in chill playlist: $CHILL_COUNT >> sync.log
-echo >> sync.log
+echo Syncing done: $SYNC_DATE
+echo Songs in hits playlist: $HITS_COUNT
+echo Songs in all playlist: $ALL_COUNT
+echo Songs in rock\'n hip-hop playlist: $ROCK_N_HIPHOP_COUNT
+echo Songs in chill playlist: $CHILL_COUNT
+echo

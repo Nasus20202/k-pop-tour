@@ -1,0 +1,45 @@
+services:
+  icecast:
+    image: libretime/icecast:2.5-beta3-alpine
+    container_name: icecast
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
+      - ICECAST_RELAY_PASSWORD=${ICECAST_RELAY_PASSWORD}
+      - ICECAST_ADMIN_PASSWORD=${ICECAST_ADMIN_PASSWORD}
+      - ICECAST_ADMIN_USERNAME=${ICECAST_ADMIN_USERNAME}
+      - ICECAST_LOCATION=${ICECAST_LOCATION}
+      - ICECAST_HOSTNAME=${ICECAST_HOSTNAME}
+      - ICECAST_MAX_CLIENTS=1000
+      - ICECAST_MAX_SOURCES=10
+  liquidsoap:
+    image: savonet/liquidsoap-alpine:v2.2.5
+    container_name: liquidsoap
+    restart: always
+    environment:
+      - ICECAST_HOST=icecast
+      - ICECAST_SOURCE_PASSWORD=${ICECAST_SOURCE_PASSWORD}
+      - DIR=/radio
+    volumes:
+      - ./stations/kpoptour.liq:/stations/kpoptour.liq
+      - ./music:/radio/music
+      - ./playlists:/radio/playlists
+      - ./sounds:/radio/sounds
+    command:
+      - /stations/kpoptour.liq
+    depends_on:
+      - icecast
+      - spotify-sync
+  spotify-sync:
+    build: ./spotify-sync
+    container_name: spotify-sync
+    restart: always
+    environment:
+      - SPOTIFY_USER=${SPOTIFY_USER}
+      - SPOTIFY_PASSWORD=${SPOTIFY_PASSWORD}
+      - DIR=/radio
+    volumes:
+      - ./music:/radio/music
+      - ./playlists:/radio/playlists

@@ -1,0 +1,2 @@
+@reboot   /app/sync-songs.sh
+0 4 * * * /app/sync-songs.sh

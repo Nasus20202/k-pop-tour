@@ -1,5 +1,4 @@
 #!/bin/bash
-DIR=~/radio
 
 locate_in_folder() {
     echo Locating songs for $1 radio
