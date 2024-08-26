@@ -1,14 +1,17 @@
-## K-Pop Tour Radio
+# K-Pop Tour Radio
 
 Icecast radio that automatically downloads new songs from Spotify playlists.
 
-To sync the songs, you have to run `./sync-songs.sh` script. You can automate it with crontab.
-When running the script for the first time, you need to login with (throwaway) Spotify credentials.
+There are currently four radio stations, each with 2 streams (mp3 and ogg) configured (all - 3.5K+ songs, hits - ~300 songs, rock-n-hiphop - ~400 songs, chill - ~500 songs) and 1 video stream (disabled by default).
 
-There are currently four audio streams (mp3 and ogg) configured (all - 3.5K+ songs, hits - ~300 songs, rock-n-hiphop - ~400 songs, chill - ~500 songs) and 1 video stream (disabled by default).
+# Running
 
-To start the radio, you need to have `icecast2` configured and `liquidsoap` installed. 
-The radio definition is located in [stations/kpoptour.liq](stations/kpoptour.liq) file.
-You can run the statio as a dearmon using this [script](https://github.com/savonet/liquidsoap-daemon). 
+The reecommended method is by using docker-compose. Create a `.env` file similar to the [example one](./.env.example) and run this command:
+```bash
+docker compose up
+# or
+docker compose up -d
+```
 
-Radio jingles are located in [the sounds directory](sounds).
+You can also run the radio as a dearmon using this [script](https://github.com/savonet/liquidsoap-daemon). 
+
