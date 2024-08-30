@@ -35,6 +35,6 @@ echo
 echo "Syncing done: $SYNC_DATE"
 echo "Songs in hits playlist: $HITS_COUNT"
 echo "Songs in all playlist: $ALL_COUNT"
-echo "Songs in rock\'n hip-hop playlist: $ROCK_N_HIPHOP_COUNT"
+echo "Songs in rock'n hip-hop playlist: $ROCK_N_HIPHOP_COUNT"
 echo "Songs in chill playlist: $CHILL_COUNT"
 echo
