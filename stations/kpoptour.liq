@@ -11,7 +11,7 @@ host = environment.get("ICECAST_HOST")
 port = 8000
 password = environment.get("ICECAST_SOURCE_PASSWORD")
 #codec_vorbis = %vorbis.abr(samplerate=44100, channels=2, bitrate=160, max_bitrate=240, min_bitrate=80)
-codec_vorbis = %ffmpeg(format="ogg", %audio(codec="libvorbis", q="6"))
+codec_vorbis = %ffmpeg(format="ogg", %audio(codec="libvorbis", q="5"))
 #codec_mp3 = %mp3.abr(bitrate=128, max_bitrate=192, id3v2=true)
 codec_mp3 = %ffmpeg(format="mp3", %audio(codec="libmp3lame", q="4"))
 
