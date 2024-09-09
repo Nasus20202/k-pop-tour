@@ -1,6 +1,5 @@
 #!/usr/bin/liquidsoap
 dir = environment.get("DIR")
-print(dir)
 
 music_reload_time = 3600
 jingles_reload_time = 24 * 3600
